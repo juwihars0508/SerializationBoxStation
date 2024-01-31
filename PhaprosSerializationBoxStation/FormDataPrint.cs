@@ -17,6 +17,7 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 //using Org.BouncyCastle.Utilities;
 using PhaprosSerializationBoxStation.Includes;
+using System.Runtime.InteropServices;
 
 namespace PhaprosSerializationBoxStation
 {
@@ -24,6 +25,17 @@ namespace PhaprosSerializationBoxStation
     {
         System.Net.Sockets.TcpClient clientSocket = new System.Net.Sockets.TcpClient();
         Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
 
         private Size formOriginalSize;
         private Rectangle recBut1;
@@ -82,6 +94,10 @@ namespace PhaprosSerializationBoxStation
         public FormDataPrint()
         {
             InitializeComponent();
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            //this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+
             this.Resize += Form3_Resize;
             formOriginalSize = this.Size;
             recBut1 = new Rectangle(btnStart.Location, btnStart.Size);
@@ -184,6 +200,15 @@ namespace PhaprosSerializationBoxStation
         public string Vcamera_data7;
         public string Vcamera_data8;
         public string Vdata_Camera;
+
+        public string vData_GTINCodeMatrixFull;
+        public string vData_GTINCodeDescFull;
+        public string Vdata_unicode;
+        public string vData_tempUnicode;
+        public string Vdata_Merged;
+
+        public string dataResult;
+
 
         //variable COM Port Setting
         public string VCOMPort;
@@ -354,19 +379,62 @@ namespace PhaprosSerializationBoxStation
                 //tbHASIL.Text = tbHASIL.Text + Environment.NewLine + " >> " + readData;
                 lb_dataReceived.Text = readData;
         }
+        public async Task<string> GeneratePatientNumberAsync()
+        {
+            var random = new Random();
+            var chars = DateTime.Now.Ticks + "123456789ABCD" + DateTime.Now.Ticks;
+            return new string(Enumerable.Repeat(chars, 13)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
 
+        private void generate_Code()
+        {
+            
+            Task<string> Result = GeneratePatientNumberAsync();
+            Vdata_unicode = Result.Result;
+
+            vData_GTINCodeMatrixFull= Vdata_GTINCodeMatrix + Vdata_unicode;
+            vData_GTINCodeDescFull = Vdata_GTINCodeDesc + Vdata_unicode;
+
+ 
+        }
+
+        private void merged_Data()
+        {
+            Vdata_Merged = lb_data1.Text + ";" + lb_data2.Text + ";" + lb_data3.Text + ";" + vData_tempUnicode;
+            //lb_actualReadCode.Text = lb_data1.Text + lb_data2.Text + lb_data3.Text + lb_data4.Text;
+        }
+
+        private void split_Data_display()
+        {
+            string authors = vData_GTINCodeDescFull;
+            string[] authorsList = authors.Split(new char[] { ';' });
+            lb_data1.Text = authorsList[0];
+            lb_data2.Text = authorsList[1];
+            lb_data3.Text = authorsList[2];
+            lb_data4.Text = authorsList[3];
+
+        }
         public void KirimkePrinterTIJ()
         {
-            string dataResult;
-            string dataUnicode;
+            //lb_data4.Text = "(21)";
+            generate_Code();
+            
+            vData_tempUnicode = "(21)"+ Vdata_unicode;
             
 
+            
+            string dataUnicode;
+
+            
             //dataUnicode = lb_data4.Text + randomPassword;
 
-            dataResult = ChrSTX + "DATA;" + lb_data1.Text + ";" + lb_data2.Text + ";" + lb_data3.Text + ";" + lb_data4.Text + " " + ChrETX;
+            dataResult = ChrSTX + "DATA;" + lb_data1.Text + ";" + lb_data2.Text + ";" + lb_data3.Text + ";" + vData_tempUnicode + ";" + vData_GTINCodeMatrixFull + ChrETX;
 
-            VdataPrint = lb_data1.Text + lb_data2.Text + lb_data3.Text + lb_data4.Text;
+            VdataPrint = vData_GTINCodeMatrixFull;
+
             
+
             
             LoadIP();
 
@@ -391,9 +459,10 @@ namespace PhaprosSerializationBoxStation
             clientPrinter.Shutdown(SocketShutdown.Both);
             clientPrinter.Close();
 
-            GetDataCamera();
+            //merged_Data();
+            //split_Data_display();
             SaveHistory_print();
-            
+            GetDataCamera();
 
         }
 
@@ -446,7 +515,7 @@ namespace PhaprosSerializationBoxStation
             progressBar1.Value = TotalCount;
             lb_Scanned.Text = TotalCount.ToString();
             lb_actualLotSize.Text = TotalCount.ToString();
-            if (lb_dataReceived.Text == "NG;")
+            if (lb_dataReceived.Text == "NG")
             {
                 Vstatus = "NG";
 
@@ -465,8 +534,11 @@ namespace PhaprosSerializationBoxStation
                 count++;
                 label4.Text = count.ToString();
                 lb_actualReadCode.Text = readData;
-                split_data_camera();
-                merged_Data();
+                Vdata_Camera = readData;
+                lb_data4.Text = vData_tempUnicode;
+                //split_data_camera();
+                split_Data_display();
+                //merged_Data();
 
             }
 
@@ -627,6 +699,19 @@ namespace PhaprosSerializationBoxStation
 
         private void Form3_Load(object sender, EventArgs e)
         {
+            panel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel1.Width, panel1.Height, 20, 20));
+            panel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel2.Width, panel2.Height, 20, 20));
+            panel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel3.Width, panel3.Height, 20, 20));
+            panel4.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel4.Width, panel4.Height, 20, 20));
+            panel5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel5.Width, panel5.Height, 20, 20));
+            panel6.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel6.Width, panel6.Height, 20, 20));
+            panel7.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel7.Width, panel7.Height, 20, 20));
+            panel8.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel8.Width, panel8.Height, 20, 20));
+            panel9.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel9.Width, panel9.Height, 20, 20));
+            panel10.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel10.Width, panel10.Height, 20, 20));
+            btnStart.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnStart.Width, btnStart.Height, 20, 20));
+            btnStop.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnStop.Width, btnStop.Height, 20, 20));
+            btnExit.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnExit.Width, btnExit.Height, 20, 20));
             tampilDataCombo();
 
             //cb_wo.SelectedIndex = 0;
@@ -668,16 +753,16 @@ namespace PhaprosSerializationBoxStation
         }
         private void split_data_camera()
         {
-            string autors = lb_actualReadCode.Text;
-            string[] authorsList = autors.Split(new char[] { '(', ')',';' });
-            Vcamera_data1 = authorsList[1];
-            Vcamera_data2 = authorsList[2];
-            Vcamera_data3 = authorsList[3];
-            Vcamera_data4 = authorsList[4];
-            Vcamera_data5 = authorsList[5];
-            Vcamera_data6 = authorsList[6];
-            Vcamera_data7 = authorsList[7];
-            Vcamera_data8 = authorsList[8];
+            //string autors = lb_actualReadCode.Text;
+            //string[] authorsList = autors.Split(new char[] { '(', ')',';' });
+            //Vcamera_data1 = authorsList[1];
+            //Vcamera_data2 = authorsList[2];
+            //Vcamera_data3 = authorsList[3];
+            //Vcamera_data4 = authorsList[4];
+            //Vcamera_data5 = authorsList[5];
+            //Vcamera_data6 = authorsList[6];
+            //Vcamera_data7 = authorsList[7];
+            //Vcamera_data8 = authorsList[8];
             
         }
         private void split_Data()
@@ -691,11 +776,7 @@ namespace PhaprosSerializationBoxStation
 
         }
 
-        private void merged_Data()
-        {
-            Vdata_Camera = Vcamera_data1 + Vcamera_data2 + ";" + Vcamera_data3 + Vcamera_data4 + ";" + Vcamera_data5 + Vcamera_data6 + ";" + Vcamera_data7 + Vcamera_data8;
-            //lb_actualReadCode.Text = lb_data1.Text + lb_data2.Text + lb_data3.Text + lb_data4.Text;
-        }
+        
         private void btnStop_Click(object sender, EventArgs e)
         {
             TotalCountPrint = 0;
@@ -817,8 +898,9 @@ namespace PhaprosSerializationBoxStation
             }
             else
             {
-                Load_dataUnicode_perRow();
+                //Load_dataUnicode_perRow();
                 KirimkePrinterTIJ();
+                
             }
         }
 
@@ -838,7 +920,7 @@ namespace PhaprosSerializationBoxStation
 
             config.con.Open();
 
-            string sql = "INSERT INTO  `tblhistory_camera` (`wo_no`, `lot_no`, `product`, `status_read`,`actual_code`, `waktu`) values('" + lb_woNo.Text + "','" + lb_lotNo.Text + "','" + lb_productName.Text + "','" + Vstatus + "','" + lb_dataReceived.Text + "','" + DateTime.Now + "') ";
+            string sql = "INSERT INTO  `tblhistory_camera` (`wo_no`, `kodeRecipe`, `noBatch`, `product`, `status_read`,`actual_code`, `waktu`) values('" + lb_woNo.Text + "','" + cbRecipe.Text + "','" + lb_lotNo.Text + "','" + lb_productName.Text + "','" + Vstatus + "','" + lb_dataReceived.Text + "','" + DateTime.Now + "') ";
             //config.Execute_CUD(sql, "Unable to saved", "Data has been saved in the database.");
             MySqlCommand cmd = new MySqlCommand(sql, config.con);
             cmd.ExecuteNonQuery();
@@ -854,7 +936,7 @@ namespace PhaprosSerializationBoxStation
 
             config.con.Open();
 
-            string sql = "INSERT INTO  `tblhistory_print` (`wo_no`, `lot_no`, `product`, `data_print`, `waktu`) values('" + lb_woNo.Text + "','" + lb_lotNo.Text + "','" + lb_productName.Text + "','" + VdataPrint + "','" + DateTime.Now + "') ";
+            string sql = "INSERT INTO  `tblhistory_print` (`wo_no`, `kodeRecipe`, `noBatch`, `product`, `data_print`, `waktu`) values('" + lb_woNo.Text + "','" + cbRecipe.Text + "','" + lb_lotNo.Text + "','" + lb_productName.Text + "','" + VdataPrint + "','" + DateTime.Now + "') ";
             //config.Execute_CUD(sql, "Unable to saved", "Data has been saved in the database.");
             MySqlCommand cmd = new MySqlCommand(sql, config.con);
             cmd.ExecuteNonQuery();
@@ -972,13 +1054,13 @@ namespace PhaprosSerializationBoxStation
 
         private void Update_data_status()
         {
-            if(Vdata_Camera == Vdata_GTINCodeMatrix)
+            if(Vdata_Camera == vData_GTINCodeMatrixFull)
             {
                 config.Init_Con();
                 config.con.Open();
-                string sql = "update tblgeneratecode set status=1 where product_code='" + cbRecipe.Text + "' and batch='" + cb_Batch.Text + "' and code_matrix='" + Vdata_Camera + "'";
+                string sql = "update tblhistory_print set status=1 where kodeRecipe='" + cbRecipe.Text + "' and noBatch='" + cb_Batch.Text + "' and data_print='" + Vdata_Camera + "'";
                 MySqlCommand cmd = new MySqlCommand(sql, config.con);
-                cmd.ExecuteNonQuery();
+                int v = cmd.ExecuteNonQuery();
 
                 config.con.Close();
             }
@@ -1020,11 +1102,15 @@ namespace PhaprosSerializationBoxStation
                 lb_productName.Text = dr[4].ToString();
                 lb_targetLotsize.Text = dr[8].ToString();
                 VDataTarget = dr[8].ToString();
-                //VDataGtin = dr[5].ToString();
+                Vdata_GTINCodeMatrix = dr[9].ToString();
+                Vdata_GTINCodeDesc = dr[10].ToString();
+
+                split_Data();
             }
             dr.Close();
             config.con.Close();
 
+            
             
         }
 

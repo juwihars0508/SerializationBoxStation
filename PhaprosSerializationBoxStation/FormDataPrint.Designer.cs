@@ -100,6 +100,7 @@ namespace PhaprosSerializationBoxStation
             this.lbWaiting = new System.Windows.Forms.Label();
             this.btnMin = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -407,11 +408,13 @@ namespace PhaprosSerializationBoxStation
             // btnStop
             // 
             this.btnStop.BackColor = System.Drawing.Color.Gray;
+            this.btnStop.FlatAppearance.BorderSize = 0;
+            this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStop.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnStop.Location = new System.Drawing.Point(71, 539);
+            this.btnStop.Location = new System.Drawing.Point(88, 522);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(63, 23);
+            this.btnStop.Size = new System.Drawing.Size(79, 40);
             this.btnStop.TabIndex = 1;
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = false;
@@ -420,11 +423,13 @@ namespace PhaprosSerializationBoxStation
             // btnStart
             // 
             this.btnStart.BackColor = System.Drawing.Color.Gray;
+            this.btnStart.FlatAppearance.BorderSize = 0;
+            this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStart.ForeColor = System.Drawing.Color.White;
-            this.btnStart.Location = new System.Drawing.Point(2, 539);
+            this.btnStart.Location = new System.Drawing.Point(2, 522);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(62, 23);
+            this.btnStart.Size = new System.Drawing.Size(79, 40);
             this.btnStart.TabIndex = 0;
             this.btnStart.Text = "Run";
             this.btnStart.UseVisualStyleBackColor = false;
@@ -480,7 +485,7 @@ namespace PhaprosSerializationBoxStation
             this.panel7.Controls.Add(this.label19);
             this.panel7.Location = new System.Drawing.Point(154, 340);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(597, 82);
+            this.panel7.Size = new System.Drawing.Size(349, 82);
             this.panel7.TabIndex = 11;
             // 
             // lb_actualReadCode
@@ -490,9 +495,9 @@ namespace PhaprosSerializationBoxStation
             this.lb_actualReadCode.ForeColor = System.Drawing.Color.White;
             this.lb_actualReadCode.Location = new System.Drawing.Point(6, 32);
             this.lb_actualReadCode.Name = "lb_actualReadCode";
-            this.lb_actualReadCode.Size = new System.Drawing.Size(368, 15);
+            this.lb_actualReadCode.Size = new System.Drawing.Size(11, 15);
             this.lb_actualReadCode.TabIndex = 17;
-            this.lb_actualReadCode.Text = "(90)DKL184040149A(10)Y21302AA(17)240901(21)Y21302AA006";
+            this.lb_actualReadCode.Text = "-";
             // 
             // label19
             // 
@@ -522,7 +527,7 @@ namespace PhaprosSerializationBoxStation
             this.lb_data4.AutoSize = true;
             this.lb_data4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_data4.ForeColor = System.Drawing.Color.Black;
-            this.lb_data4.Location = new System.Drawing.Point(789, 398);
+            this.lb_data4.Location = new System.Drawing.Point(696, 397);
             this.lb_data4.Name = "lb_data4";
             this.lb_data4.Size = new System.Drawing.Size(11, 15);
             this.lb_data4.TabIndex = 21;
@@ -533,7 +538,7 @@ namespace PhaprosSerializationBoxStation
             this.lb_data3.AutoSize = true;
             this.lb_data3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_data3.ForeColor = System.Drawing.Color.Black;
-            this.lb_data3.Location = new System.Drawing.Point(789, 383);
+            this.lb_data3.Location = new System.Drawing.Point(696, 378);
             this.lb_data3.Name = "lb_data3";
             this.lb_data3.Size = new System.Drawing.Size(11, 15);
             this.lb_data3.TabIndex = 20;
@@ -544,7 +549,7 @@ namespace PhaprosSerializationBoxStation
             this.lb_data2.AutoSize = true;
             this.lb_data2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_data2.ForeColor = System.Drawing.Color.Black;
-            this.lb_data2.Location = new System.Drawing.Point(789, 361);
+            this.lb_data2.Location = new System.Drawing.Point(696, 360);
             this.lb_data2.Name = "lb_data2";
             this.lb_data2.Size = new System.Drawing.Size(11, 15);
             this.lb_data2.TabIndex = 19;
@@ -555,7 +560,7 @@ namespace PhaprosSerializationBoxStation
             this.lb_data1.AutoSize = true;
             this.lb_data1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_data1.ForeColor = System.Drawing.Color.Black;
-            this.lb_data1.Location = new System.Drawing.Point(789, 346);
+            this.lb_data1.Location = new System.Drawing.Point(696, 342);
             this.lb_data1.Name = "lb_data1";
             this.lb_data1.Size = new System.Drawing.Size(11, 15);
             this.lb_data1.TabIndex = 18;
@@ -724,11 +729,13 @@ namespace PhaprosSerializationBoxStation
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.Gray;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnExit.Location = new System.Drawing.Point(140, 539);
+            this.btnExit.Location = new System.Drawing.Point(176, 522);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(63, 23);
+            this.btnExit.Size = new System.Drawing.Size(79, 40);
             this.btnExit.TabIndex = 33;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = false;
@@ -840,10 +847,21 @@ namespace PhaprosSerializationBoxStation
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.panel10.Location = new System.Drawing.Point(211, 541);
+            this.panel10.Location = new System.Drawing.Point(290, 541);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(792, 20);
+            this.panel10.Size = new System.Drawing.Size(713, 20);
             this.panel10.TabIndex = 43;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Webdings", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(535, 345);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(11, 15);
+            this.label9.TabIndex = 44;
+            this.label9.Text = "-";
             // 
             // FormDataPrint
             // 
@@ -853,6 +871,7 @@ namespace PhaprosSerializationBoxStation
             this.BackgroundImage = global::PhaprosSerializationBoxStation.Properties.Resources.BC_1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1016, 600);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.btnMin);
             this.Controls.Add(this.lbWaiting);
@@ -895,7 +914,7 @@ namespace PhaprosSerializationBoxStation
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormDataPrint";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Form3";
             this.Load += new System.EventHandler(this.Form3_Load);
             this.Resize += new System.EventHandler(this.Form3_Resize);
@@ -997,5 +1016,6 @@ namespace PhaprosSerializationBoxStation
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Label label9;
     }
 }
