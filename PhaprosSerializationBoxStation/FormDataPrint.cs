@@ -207,7 +207,7 @@ namespace PhaprosSerializationBoxStation
         public string vData_tempUnicode;
         public string Vdata_Merged;
 
-        public string dataResult;
+        //public string dataResult;
 
 
         //variable COM Port Setting
@@ -407,7 +407,7 @@ namespace PhaprosSerializationBoxStation
 
         private void split_Data_display()
         {
-            string authors = vData_GTINCodeDescFull;
+            string authors = Vdata_Merged;
             string[] authorsList = authors.Split(new char[] { ';' });
             lb_data1.Text = authorsList[0];
             lb_data2.Text = authorsList[1];
@@ -425,6 +425,7 @@ namespace PhaprosSerializationBoxStation
 
             
             string dataUnicode;
+            string dataResult;
 
             
             //dataUnicode = lb_data4.Text + randomPassword;
@@ -459,8 +460,8 @@ namespace PhaprosSerializationBoxStation
             clientPrinter.Shutdown(SocketShutdown.Both);
             clientPrinter.Close();
 
-            //merged_Data();
-            //split_Data_display();
+            merged_Data();
+            split_Data_display();
             SaveHistory_print();
             GetDataCamera();
 
@@ -537,11 +538,12 @@ namespace PhaprosSerializationBoxStation
                 Vdata_Camera = readData;
                 lb_data4.Text = vData_tempUnicode;
                 //split_data_camera();
-                split_Data_display();
+                
                 //merged_Data();
-
+                //split_Data_display();
             }
 
+            //split_Data_display();
             SaveHistory_camera();
             Update_data_status();
             //timer2.Stop();

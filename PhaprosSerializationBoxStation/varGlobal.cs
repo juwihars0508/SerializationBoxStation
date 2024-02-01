@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace PhaprosSerializationBoxStation
 {
+
     class varUtility
     {
         public static string fileIpAddress = @"Data\IPAddress_String.txt";
