@@ -626,7 +626,7 @@ namespace PhaprosSerializationBoxStation
             // 
             // timer3
             // 
-            this.timer3.Interval = 10;
+            this.timer3.Interval = 2;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
             // lb_actualLotSize

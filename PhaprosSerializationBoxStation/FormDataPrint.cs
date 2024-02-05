@@ -414,7 +414,7 @@ namespace PhaprosSerializationBoxStation
             lb_data3.Text = authorsList[2];
             lb_data4.Text = authorsList[3];
 
-        }
+       }
         public void KirimkePrinterTIJ()
         {
             //lb_data4.Text = "(21)";
@@ -459,7 +459,7 @@ namespace PhaprosSerializationBoxStation
             
             clientPrinter.Shutdown(SocketShutdown.Both);
             clientPrinter.Close();
-
+            timer3.Stop();
             merged_Data();
             split_Data_display();
             SaveHistory_print();
@@ -523,10 +523,11 @@ namespace PhaprosSerializationBoxStation
                 countNG++;
                 lb_fail.Text = countNG.ToString();
                 lb_actualReadCode.Text = "NG";
-
+                Vdata_Camera = readData;
                 //lb_Scanned.Text = count.ToString();
                 //Thread.Sleep(500);
                 //await Task.Delay(100);
+
 
             }
             else
@@ -547,7 +548,7 @@ namespace PhaprosSerializationBoxStation
             SaveHistory_camera();
             Update_data_status();
             //timer2.Stop();
-            //timer3.Start();
+            timer3.Start();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -1056,8 +1057,7 @@ namespace PhaprosSerializationBoxStation
 
         private void Update_data_status()
         {
-            if(Vdata_Camera == vData_GTINCodeMatrixFull)
-            {
+            
                 config.Init_Con();
                 config.con.Open();
                 string sql = "update tblhistory_print set status=1 where kodeRecipe='" + cbRecipe.Text + "' and noBatch='" + cb_Batch.Text + "' and data_print='" + Vdata_Camera + "'";
@@ -1065,11 +1065,7 @@ namespace PhaprosSerializationBoxStation
                 int v = cmd.ExecuteNonQuery();
 
                 config.con.Close();
-            }
-            else
-            {
-                lbWaiting.Text = "Data Not Match";
-            }
+            
         }
 
         private void Load_Lot_size()
