@@ -110,7 +110,7 @@ namespace PhaprosSerializationBoxStation
 
         private void btn_MenuReport_Click(object sender, EventArgs e)
         {
-            FormReport frmReport = new FormReport();
+            FormDataReport frmReport = new FormDataReport();
             frmReport.Show();
             this.Hide();
         }

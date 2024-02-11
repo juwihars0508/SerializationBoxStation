@@ -452,9 +452,9 @@ namespace PhaprosSerializationBoxStation
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(24, 13);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(59, 18);
+            this.label11.Size = new System.Drawing.Size(77, 18);
             this.label11.TabIndex = 13;
-            this.label11.Text = "Lot No.";
+            this.label11.Text = "Batch No.";
             // 
             // lb_lotNo
             // 

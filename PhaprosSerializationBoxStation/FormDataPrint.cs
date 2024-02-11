@@ -935,11 +935,12 @@ namespace PhaprosSerializationBoxStation
 
         public void SaveHistory_print()
         {
+            string vAction = "Create";
             config.Init_Con();
 
             config.con.Open();
 
-            string sql = "INSERT INTO  `tblhistory_print` (`wo_no`, `kodeRecipe`, `noBatch`, `product`, `data_print`, `waktu`) values('" + lb_woNo.Text + "','" + cbRecipe.Text + "','" + lb_lotNo.Text + "','" + lb_productName.Text + "','" + VdataPrint + "','" + DateTime.Now + "') ";
+            string sql = "INSERT INTO  `tblhistory_print` (`wo_no`, `kodeRecipe`, `noBatch`, `product`, `data_print`, `waktu`,action) values('" + lb_woNo.Text + "','" + cbRecipe.Text + "','" + lb_lotNo.Text + "','" + lb_productName.Text + "','" + VdataPrint + "','" + DateTime.Now + "','"+ vAction +"') ";
             //config.Execute_CUD(sql, "Unable to saved", "Data has been saved in the database.");
             MySqlCommand cmd = new MySqlCommand(sql, config.con);
             cmd.ExecuteNonQuery();
@@ -1060,7 +1061,7 @@ namespace PhaprosSerializationBoxStation
             
                 config.Init_Con();
                 config.con.Open();
-                string sql = "update tblhistory_print set status=1 where kodeRecipe='" + cbRecipe.Text + "' and noBatch='" + cb_Batch.Text + "' and data_print='" + Vdata_Camera + "'";
+                string sql = "update tblhistory_print set status=1, is_Active=true where kodeRecipe='" + cbRecipe.Text + "' and noBatch='" + cb_Batch.Text + "' and data_print='" + Vdata_Camera + "'";
                 MySqlCommand cmd = new MySqlCommand(sql, config.con);
                 int v = cmd.ExecuteNonQuery();
 

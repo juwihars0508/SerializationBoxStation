@@ -110,7 +110,7 @@ namespace PhaprosSerializationBoxStation
 
         private void button1_Click(object sender, EventArgs e)
         {
-            sql = "SELECT  id, wo_no, lot_no, product, data_print, waktu FROM tblhistory_print  ORDER BY id ASC";
+            sql = "SELECT * FROM viewdatareportserialization";
             reports(sql, "CrptHistory_Print");
         }
 

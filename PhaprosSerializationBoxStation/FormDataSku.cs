@@ -131,7 +131,7 @@ namespace PhaprosSerializationBoxStation
             config.con.Close();
             DateTime sekarang = DateTime.Now;
             i++;
-            tbRecipeCode.Text = "RC" + sekarang.ToString("yy") + sekarang.ToString("MM") + sekarang.ToString("dd") + i.ToString("000");
+            tbRecipeCode.Text = "RC" + sekarang.ToString("yy") + sekarang.ToString("MM") + sekarang.ToString("dd") + i.ToString("0000");
 
         }
 

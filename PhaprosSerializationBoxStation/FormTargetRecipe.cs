@@ -384,11 +384,14 @@ namespace PhaprosSerializationBoxStation
             {
                 tambahsatu = Convert.ToInt32(sdr[0].ToString().Substring(sdr[0].ToString().Length - 4, 4)) + 1;
                 string gabung = "0000" + tambahsatu;
-                kode = "RQ" + gabung.Substring(gabung.ToString().Length - 4, 4);
+                DateTime sekarang = DateTime.Now;
+                kode = "RQ" + sekarang.ToString("yy") + sekarang.ToString("MM") + sekarang.ToString("dd") + gabung.Substring(gabung.ToString().Length - 4, 4);
             }
             else
             {
-                kode = "RQ0001";
+                DateTime sekarang = DateTime.Now;
+
+                kode = "RQ"+ sekarang.ToString("yy") + sekarang.ToString("MM") + sekarang.ToString("dd")+ "0001";
             }
             sdr.Close();
             lb_IDRecipe.Text = kode;
