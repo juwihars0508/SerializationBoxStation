@@ -401,6 +401,7 @@ namespace PhaprosSerializationBoxStation
             this.btnMin.TabIndex = 44;
             this.btnMin.Text = "-";
             this.btnMin.UseVisualStyleBackColor = false;
+            this.btnMin.Visible = false;
             this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
             // 
             // FormDataWO
