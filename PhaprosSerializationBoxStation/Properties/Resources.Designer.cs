@@ -123,6 +123,16 @@ namespace PhaprosSerializationBoxStation.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LIGHT_TRANSPARAN {
+            get {
+                object obj = ResourceManager.GetObject("LIGHT TRANSPARAN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logoProline {
             get {
                 object obj = ResourceManager.GetObject("logoProline", resourceCulture);
