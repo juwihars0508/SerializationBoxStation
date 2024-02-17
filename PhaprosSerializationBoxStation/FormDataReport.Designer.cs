@@ -41,29 +41,40 @@ namespace PhaprosSerializationBoxStation
             this.btnExport = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.pnlReportBPOM = new System.Windows.Forms.Panel();
+            this.pnlReportGeneral = new System.Windows.Forms.Panel();
+            this.dgvRptGnrl = new System.Windows.Forms.DataGridView();
             this.btnSearch = new System.Windows.Forms.Button();
             this.CbGood = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.CbAll = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cb_wo = new System.Windows.Forms.ComboBox();
             this.lblNo_WO = new System.Windows.Forms.Label();
+            this.btnRptGnrl = new System.Windows.Forms.Button();
+            this.btnRptBpom = new System.Windows.Forms.Button();
+            this.btnRptReprint = new System.Windows.Forms.Button();
+            this.pnlRptRePrint = new System.Windows.Forms.Panel();
+            this.dgvReprint = new System.Windows.Forms.DataGridView();
+            this.btnSearchReprint = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cbWoReprint = new System.Windows.Forms.ComboBox();
+            this.lbWO_reprint = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.pnlReportBPOM.SuspendLayout();
+            this.pnlReportGeneral.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRptGnrl)).BeginInit();
+            this.pnlRptRePrint.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReprint)).BeginInit();
             this.SuspendLayout();
             // 
             // btnMin
             // 
             this.btnMin.BackColor = System.Drawing.Color.Transparent;
-            this.btnMin.BackgroundImage = global::PhaprosSerializationBoxStation.Properties.Resources.minimize_button_icon;
+            this.btnMin.BackgroundImage = global::PhaprosSerializationBoxStation.Properties.Resources.MinimizeDark;
             this.btnMin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnMin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMin.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -71,7 +82,6 @@ namespace PhaprosSerializationBoxStation
             this.btnMin.Name = "btnMin";
             this.btnMin.Size = new System.Drawing.Size(41, 23);
             this.btnMin.TabIndex = 45;
-            this.btnMin.Text = "-";
             this.btnMin.UseVisualStyleBackColor = false;
             // 
             // btn_MainMenu
@@ -81,7 +91,7 @@ namespace PhaprosSerializationBoxStation
             this.btn_MainMenu.FlatAppearance.BorderSize = 0;
             this.btn_MainMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_MainMenu.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_MainMenu.Location = new System.Drawing.Point(925, 679);
+            this.btn_MainMenu.Location = new System.Drawing.Point(901, 627);
             this.btn_MainMenu.Name = "btn_MainMenu";
             this.btn_MainMenu.Size = new System.Drawing.Size(88, 38);
             this.btn_MainMenu.TabIndex = 44;
@@ -91,7 +101,7 @@ namespace PhaprosSerializationBoxStation
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::PhaprosSerializationBoxStation.Properties.Resources.logoProline;
+            this.pictureBox1.Image = global::PhaprosSerializationBoxStation.Properties.Resources.LIGHT_TRANSPARAN;
             this.pictureBox1.Location = new System.Drawing.Point(4, 19);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(123, 54);
@@ -146,9 +156,9 @@ namespace PhaprosSerializationBoxStation
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 3);
+            this.dataGridView1.Location = new System.Drawing.Point(8, 3);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1009, 220);
+            this.dataGridView1.Size = new System.Drawing.Size(917, 220);
             this.dataGridView1.TabIndex = 46;
             // 
             // btnExport
@@ -158,7 +168,7 @@ namespace PhaprosSerializationBoxStation
             this.btnExport.FlatAppearance.BorderSize = 0;
             this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExport.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExport.Location = new System.Drawing.Point(4, 679);
+            this.btnExport.Location = new System.Drawing.Point(10, 229);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(88, 38);
             this.btnExport.TabIndex = 47;
@@ -184,37 +194,40 @@ namespace PhaprosSerializationBoxStation
             this.panel1.Size = new System.Drawing.Size(1012, 11);
             this.panel1.TabIndex = 49;
             // 
-            // panel3
+            // pnlReportBPOM
             // 
-            this.panel3.Controls.Add(this.dataGridView1);
-            this.panel3.Location = new System.Drawing.Point(4, 434);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1012, 223);
-            this.panel3.TabIndex = 50;
+            this.pnlReportBPOM.Controls.Add(this.btnExport);
+            this.pnlReportBPOM.Controls.Add(this.dataGridView1);
+            this.pnlReportBPOM.Location = new System.Drawing.Point(39, 335);
+            this.pnlReportBPOM.Name = "pnlReportBPOM";
+            this.pnlReportBPOM.Size = new System.Drawing.Size(952, 273);
+            this.pnlReportBPOM.TabIndex = 50;
+            this.pnlReportBPOM.Visible = false;
             // 
-            // panel4
+            // pnlReportGeneral
             // 
-            this.panel4.Controls.Add(this.dataGridView2);
-            this.panel4.Controls.Add(this.btnSearch);
-            this.panel4.Controls.Add(this.CbGood);
-            this.panel4.Controls.Add(this.label4);
-            this.panel4.Controls.Add(this.CbAll);
-            this.panel4.Controls.Add(this.label3);
-            this.panel4.Controls.Add(this.label2);
-            this.panel4.Controls.Add(this.comboBox1);
-            this.panel4.Controls.Add(this.lblNo_WO);
-            this.panel4.Location = new System.Drawing.Point(-3, 130);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1019, 286);
-            this.panel4.TabIndex = 51;
+            this.pnlReportGeneral.Controls.Add(this.dgvRptGnrl);
+            this.pnlReportGeneral.Controls.Add(this.btnSearch);
+            this.pnlReportGeneral.Controls.Add(this.CbGood);
+            this.pnlReportGeneral.Controls.Add(this.label4);
+            this.pnlReportGeneral.Controls.Add(this.CbAll);
+            this.pnlReportGeneral.Controls.Add(this.label3);
+            this.pnlReportGeneral.Controls.Add(this.label2);
+            this.pnlReportGeneral.Controls.Add(this.cb_wo);
+            this.pnlReportGeneral.Controls.Add(this.lblNo_WO);
+            this.pnlReportGeneral.Location = new System.Drawing.Point(39, 335);
+            this.pnlReportGeneral.Name = "pnlReportGeneral";
+            this.pnlReportGeneral.Size = new System.Drawing.Size(952, 273);
+            this.pnlReportGeneral.TabIndex = 51;
+            this.pnlReportGeneral.Visible = false;
             // 
-            // dataGridView2
+            // dgvRptGnrl
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(0, 117);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(1012, 150);
-            this.dataGridView2.TabIndex = 8;
+            this.dgvRptGnrl.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRptGnrl.Location = new System.Drawing.Point(15, 97);
+            this.dgvRptGnrl.Name = "dgvRptGnrl";
+            this.dgvRptGnrl.Size = new System.Drawing.Size(921, 150);
+            this.dgvRptGnrl.TabIndex = 8;
             // 
             // btnSearch
             // 
@@ -222,7 +235,7 @@ namespace PhaprosSerializationBoxStation
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(387, 81);
+            this.btnSearch.Location = new System.Drawing.Point(387, 56);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 30);
             this.btnSearch.TabIndex = 7;
@@ -239,6 +252,7 @@ namespace PhaprosSerializationBoxStation
             this.CbGood.Size = new System.Drawing.Size(15, 14);
             this.CbGood.TabIndex = 6;
             this.CbGood.UseVisualStyleBackColor = true;
+            this.CbGood.CheckedChanged += new System.EventHandler(this.CbGood_CheckedChanged);
             // 
             // label4
             // 
@@ -259,6 +273,7 @@ namespace PhaprosSerializationBoxStation
             this.CbAll.Size = new System.Drawing.Size(15, 14);
             this.CbAll.TabIndex = 4;
             this.CbAll.UseVisualStyleBackColor = true;
+            this.CbAll.CheckedChanged += new System.EventHandler(this.CbAll_CheckedChanged);
             // 
             // label3
             // 
@@ -280,13 +295,13 @@ namespace PhaprosSerializationBoxStation
             this.label2.TabIndex = 2;
             this.label2.Text = ":";
             // 
-            // comboBox1
+            // cb_wo
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(295, 19);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 1;
+            this.cb_wo.FormattingEnabled = true;
+            this.cb_wo.Location = new System.Drawing.Point(295, 19);
+            this.cb_wo.Name = "cb_wo";
+            this.cb_wo.Size = new System.Drawing.Size(121, 21);
+            this.cb_wo.TabIndex = 1;
             // 
             // lblNo_WO
             // 
@@ -298,6 +313,111 @@ namespace PhaprosSerializationBoxStation
             this.lblNo_WO.TabIndex = 0;
             this.lblNo_WO.Text = "No. WO";
             // 
+            // btnRptGnrl
+            // 
+            this.btnRptGnrl.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnRptGnrl.FlatAppearance.BorderSize = 0;
+            this.btnRptGnrl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRptGnrl.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRptGnrl.Location = new System.Drawing.Point(12, 177);
+            this.btnRptGnrl.Name = "btnRptGnrl";
+            this.btnRptGnrl.Size = new System.Drawing.Size(145, 43);
+            this.btnRptGnrl.TabIndex = 52;
+            this.btnRptGnrl.Text = "Report General";
+            this.btnRptGnrl.UseVisualStyleBackColor = false;
+            this.btnRptGnrl.Click += new System.EventHandler(this.btnRptGnrl_Click);
+            // 
+            // btnRptBpom
+            // 
+            this.btnRptBpom.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnRptBpom.FlatAppearance.BorderSize = 0;
+            this.btnRptBpom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRptBpom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRptBpom.Location = new System.Drawing.Point(12, 246);
+            this.btnRptBpom.Name = "btnRptBpom";
+            this.btnRptBpom.Size = new System.Drawing.Size(145, 43);
+            this.btnRptBpom.TabIndex = 53;
+            this.btnRptBpom.Text = "Report BPOM";
+            this.btnRptBpom.UseVisualStyleBackColor = false;
+            this.btnRptBpom.Click += new System.EventHandler(this.btnRptBpom_Click);
+            // 
+            // btnRptReprint
+            // 
+            this.btnRptReprint.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnRptReprint.FlatAppearance.BorderSize = 0;
+            this.btnRptReprint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRptReprint.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRptReprint.Location = new System.Drawing.Point(183, 177);
+            this.btnRptReprint.Name = "btnRptReprint";
+            this.btnRptReprint.Size = new System.Drawing.Size(145, 43);
+            this.btnRptReprint.TabIndex = 54;
+            this.btnRptReprint.Text = "Report RePrint";
+            this.btnRptReprint.UseVisualStyleBackColor = false;
+            this.btnRptReprint.Click += new System.EventHandler(this.btnRptReprint_Click);
+            // 
+            // pnlRptRePrint
+            // 
+            this.pnlRptRePrint.Controls.Add(this.dgvReprint);
+            this.pnlRptRePrint.Controls.Add(this.btnSearchReprint);
+            this.pnlRptRePrint.Controls.Add(this.label8);
+            this.pnlRptRePrint.Controls.Add(this.cbWoReprint);
+            this.pnlRptRePrint.Controls.Add(this.lbWO_reprint);
+            this.pnlRptRePrint.Location = new System.Drawing.Point(39, 335);
+            this.pnlRptRePrint.Name = "pnlRptRePrint";
+            this.pnlRptRePrint.Size = new System.Drawing.Size(952, 273);
+            this.pnlRptRePrint.TabIndex = 55;
+            this.pnlRptRePrint.Visible = false;
+            // 
+            // dgvReprint
+            // 
+            this.dgvReprint.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvReprint.Location = new System.Drawing.Point(15, 70);
+            this.dgvReprint.Name = "dgvReprint";
+            this.dgvReprint.Size = new System.Drawing.Size(921, 150);
+            this.dgvReprint.TabIndex = 8;
+            // 
+            // btnSearchReprint
+            // 
+            this.btnSearchReprint.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnSearchReprint.FlatAppearance.BorderSize = 0;
+            this.btnSearchReprint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearchReprint.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchReprint.Location = new System.Drawing.Point(438, 16);
+            this.btnSearchReprint.Name = "btnSearchReprint";
+            this.btnSearchReprint.Size = new System.Drawing.Size(75, 30);
+            this.btnSearchReprint.TabIndex = 7;
+            this.btnSearchReprint.Text = "Search";
+            this.btnSearchReprint.UseVisualStyleBackColor = false;
+            this.btnSearchReprint.Click += new System.EventHandler(this.btnSearchReprint_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(274, 21);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(15, 19);
+            this.label8.TabIndex = 2;
+            this.label8.Text = ":";
+            // 
+            // cbWoReprint
+            // 
+            this.cbWoReprint.FormattingEnabled = true;
+            this.cbWoReprint.Location = new System.Drawing.Point(295, 19);
+            this.cbWoReprint.Name = "cbWoReprint";
+            this.cbWoReprint.Size = new System.Drawing.Size(121, 21);
+            this.cbWoReprint.TabIndex = 1;
+            // 
+            // lbWO_reprint
+            // 
+            this.lbWO_reprint.AutoSize = true;
+            this.lbWO_reprint.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbWO_reprint.Location = new System.Drawing.Point(195, 21);
+            this.lbWO_reprint.Name = "lbWO_reprint";
+            this.lbWO_reprint.Size = new System.Drawing.Size(66, 19);
+            this.lbWO_reprint.TabIndex = 0;
+            this.lbWO_reprint.Text = "No. WO";
+            // 
             // FormDataReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -305,16 +425,19 @@ namespace PhaprosSerializationBoxStation
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::PhaprosSerializationBoxStation.Properties.Resources.BC_1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(1016, 739);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
+            this.ClientSize = new System.Drawing.Size(1016, 685);
+            this.Controls.Add(this.btnRptReprint);
+            this.Controls.Add(this.btnRptBpom);
+            this.Controls.Add(this.btnRptGnrl);
+            this.Controls.Add(this.pnlRptRePrint);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnMin);
             this.Controls.Add(this.btn_MainMenu);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.pnlReportGeneral);
+            this.Controls.Add(this.pnlReportBPOM);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormDataReport";
@@ -325,10 +448,13 @@ namespace PhaprosSerializationBoxStation
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.pnlReportBPOM.ResumeLayout(false);
+            this.pnlReportGeneral.ResumeLayout(false);
+            this.pnlReportGeneral.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRptGnrl)).EndInit();
+            this.pnlRptRePrint.ResumeLayout(false);
+            this.pnlRptRePrint.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReprint)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -347,16 +473,25 @@ namespace PhaprosSerializationBoxStation
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel pnlReportBPOM;
+        private System.Windows.Forms.Panel pnlReportGeneral;
         private System.Windows.Forms.Label lblNo_WO;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgvRptGnrl;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.CheckBox CbGood;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox CbAll;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cb_wo;
+        private System.Windows.Forms.Button btnRptGnrl;
+        private System.Windows.Forms.Button btnRptBpom;
+        private System.Windows.Forms.Button btnRptReprint;
+        private System.Windows.Forms.Panel pnlRptRePrint;
+        private System.Windows.Forms.DataGridView dgvReprint;
+        private System.Windows.Forms.Button btnSearchReprint;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cbWoReprint;
+        private System.Windows.Forms.Label lbWO_reprint;
     }
 }

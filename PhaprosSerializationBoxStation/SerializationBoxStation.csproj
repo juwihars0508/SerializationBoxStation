@@ -113,7 +113,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\Run.cs" />
+    <Compile Include="crHistoryReprint.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crHistoryReprint.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CrptHistory_Print.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -174,6 +179,12 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormReportRePrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReportRePrint.Designer.cs">
+      <DependentUpon>FormReportRePrint.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormTargetRecipe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,7 +197,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="ProgramBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="reprint.cs">
       <SubType>Form</SubType>
@@ -196,6 +206,10 @@
     </Compile>
     <Compile Include="SocketTCP.cs" />
     <Compile Include="varGlobal.cs" />
+    <EmbeddedResource Include="crHistoryReprint.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crHistoryReprint.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="CrptHistory_Print.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrptHistory_Print.cs</LastGenOutput>
@@ -227,6 +241,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReportRePrint.resx">
+      <DependentUpon>FormReportRePrint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTargetRecipe.resx">
       <DependentUpon>FormTargetRecipe.cs</DependentUpon>
@@ -281,6 +298,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logoProline.ico" />
+    <None Include="Resources\MinimizeDark.png" />
     <None Include="Resources\LIGHT TRANSPARAN.png" />
     <None Include="Resources\CloseDark.png" />
     <None Include="Resources\btnClose.png" />

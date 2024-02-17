@@ -132,7 +132,7 @@ namespace PhaprosSerializationBoxStation
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::PhaprosSerializationBoxStation.Properties.Resources.logoProline;
+            this.pictureBox1.Image = global::PhaprosSerializationBoxStation.Properties.Resources.LIGHT_TRANSPARAN;
             this.pictureBox1.Location = new System.Drawing.Point(4, 52);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(123, 54);
@@ -562,7 +562,7 @@ namespace PhaprosSerializationBoxStation
             // btnMin
             // 
             this.btnMin.BackColor = System.Drawing.Color.Transparent;
-            this.btnMin.BackgroundImage = global::PhaprosSerializationBoxStation.Properties.Resources.minimize_button_icon;
+            this.btnMin.BackgroundImage = global::PhaprosSerializationBoxStation.Properties.Resources.MinimizeDark;
             this.btnMin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnMin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMin.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -570,7 +570,6 @@ namespace PhaprosSerializationBoxStation
             this.btnMin.Name = "btnMin";
             this.btnMin.Size = new System.Drawing.Size(41, 23);
             this.btnMin.TabIndex = 39;
-            this.btnMin.Text = "-";
             this.btnMin.UseVisualStyleBackColor = false;
             this.btnMin.Visible = false;
             this.btnMin.Click += new System.EventHandler(this.btnMin_Click);

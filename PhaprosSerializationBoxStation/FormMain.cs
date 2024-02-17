@@ -167,5 +167,12 @@ namespace PhaprosSerializationBoxStation
         {
             WindowState = FormWindowState.Minimized;
         }
+
+        private void btn_MenuReprint_Click(object sender, EventArgs e)
+        {
+            reprint FormReprint = new reprint();
+            FormReprint.Show();
+            this.Hide();
+        }
     }
 }

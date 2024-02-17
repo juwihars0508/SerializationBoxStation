@@ -35,7 +35,7 @@ namespace PhaprosSerializationBoxStation
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.CB_Login = new System.Windows.Forms.ComboBox();
+            this.CB_User = new System.Windows.Forms.ComboBox();
             this.btnIN = new System.Windows.Forms.Button();
             this.tbPass = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,27 +44,32 @@ namespace PhaprosSerializationBoxStation
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.CbNo_WO = new System.Windows.Forms.ComboBox();
-            this.tbNo_Batch = new System.Windows.Forms.TextBox();
-            this.tbNo_SN = new System.Windows.Forms.TextBox();
-            this.btn_Search = new System.Windows.Forms.Button();
             this.btn_Print = new System.Windows.Forms.Button();
+            this.btn_Search = new System.Windows.Forms.Button();
+            this.tbNo_SN = new System.Windows.Forms.TextBox();
+            this.tbNo_Batch = new System.Windows.Forms.TextBox();
+            this.CbNo_WO = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dgvReprint = new System.Windows.Forms.DataGridView();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lb_data1 = new System.Windows.Forms.Label();
+            this.lb_data2 = new System.Windows.Forms.Label();
+            this.lb_data4 = new System.Windows.Forms.Label();
+            this.lb_data3 = new System.Windows.Forms.Label();
             this.pnlLoginSupervisor.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReprint)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlLoginSupervisor
@@ -74,7 +79,7 @@ namespace PhaprosSerializationBoxStation
             this.pnlLoginSupervisor.Controls.Add(this.label4);
             this.pnlLoginSupervisor.Controls.Add(this.panel3);
             this.pnlLoginSupervisor.Controls.Add(this.label5);
-            this.pnlLoginSupervisor.Controls.Add(this.CB_Login);
+            this.pnlLoginSupervisor.Controls.Add(this.CB_User);
             this.pnlLoginSupervisor.Controls.Add(this.btnIN);
             this.pnlLoginSupervisor.Controls.Add(this.tbPass);
             this.pnlLoginSupervisor.Controls.Add(this.label1);
@@ -133,14 +138,14 @@ namespace PhaprosSerializationBoxStation
             this.label5.TabIndex = 13;
             this.label5.Text = ":";
             // 
-            // CB_Login
+            // CB_User
             // 
-            this.CB_Login.BackColor = System.Drawing.Color.White;
-            this.CB_Login.FormattingEnabled = true;
-            this.CB_Login.Location = new System.Drawing.Point(214, 109);
-            this.CB_Login.Name = "CB_Login";
-            this.CB_Login.Size = new System.Drawing.Size(121, 21);
-            this.CB_Login.TabIndex = 6;
+            this.CB_User.BackColor = System.Drawing.Color.White;
+            this.CB_User.FormattingEnabled = true;
+            this.CB_User.Location = new System.Drawing.Point(214, 109);
+            this.CB_User.Name = "CB_User";
+            this.CB_User.Size = new System.Drawing.Size(121, 21);
+            this.CB_User.TabIndex = 6;
             // 
             // btnIN
             // 
@@ -154,6 +159,7 @@ namespace PhaprosSerializationBoxStation
             this.btnIN.TabIndex = 7;
             this.btnIN.Text = "IN";
             this.btnIN.UseVisualStyleBackColor = false;
+            this.btnIN.Click += new System.EventHandler(this.btnIN_Click);
             // 
             // tbPass
             // 
@@ -223,7 +229,7 @@ namespace PhaprosSerializationBoxStation
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.dgvReprint);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
@@ -233,127 +239,7 @@ namespace PhaprosSerializationBoxStation
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(786, 242);
             this.panel1.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 16);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Reprint";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Black;
-            this.panel2.Location = new System.Drawing.Point(3, 31);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(780, 13);
-            this.panel2.TabIndex = 1;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 57);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 16);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "No. WO";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(12, 84);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 16);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "No. Batch";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(12, 111);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(51, 16);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "No. SN";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 141);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(780, 65);
-            this.dataGridView1.TabIndex = 6;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(95, 57);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(12, 16);
-            this.label9.TabIndex = 7;
-            this.label9.Text = ":";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(95, 84);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(12, 16);
-            this.label10.TabIndex = 8;
-            this.label10.Text = ":";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(95, 111);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(12, 16);
-            this.label11.TabIndex = 9;
-            this.label11.Text = ":";
-            // 
-            // CbNo_WO
-            // 
-            this.CbNo_WO.FormattingEnabled = true;
-            this.CbNo_WO.Location = new System.Drawing.Point(113, 52);
-            this.CbNo_WO.Name = "CbNo_WO";
-            this.CbNo_WO.Size = new System.Drawing.Size(121, 21);
-            this.CbNo_WO.TabIndex = 10;
-            // 
-            // tbNo_Batch
-            // 
-            this.tbNo_Batch.Location = new System.Drawing.Point(113, 80);
-            this.tbNo_Batch.Name = "tbNo_Batch";
-            this.tbNo_Batch.Size = new System.Drawing.Size(121, 20);
-            this.tbNo_Batch.TabIndex = 11;
-            // 
-            // tbNo_SN
-            // 
-            this.tbNo_SN.Location = new System.Drawing.Point(113, 107);
-            this.tbNo_SN.Name = "tbNo_SN";
-            this.tbNo_SN.Size = new System.Drawing.Size(578, 20);
-            this.tbNo_SN.TabIndex = 12;
-            // 
-            // btn_Search
-            // 
-            this.btn_Search.BackColor = System.Drawing.Color.DarkGray;
-            this.btn_Search.FlatAppearance.BorderSize = 0;
-            this.btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Search.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Search.Location = new System.Drawing.Point(699, 104);
-            this.btn_Search.Name = "btn_Search";
-            this.btn_Search.Size = new System.Drawing.Size(75, 23);
-            this.btn_Search.TabIndex = 13;
-            this.btn_Search.Text = "Search";
-            this.btn_Search.UseVisualStyleBackColor = false;
+            this.panel1.Visible = false;
             // 
             // btn_Print
             // 
@@ -367,16 +253,201 @@ namespace PhaprosSerializationBoxStation
             this.btn_Print.TabIndex = 14;
             this.btn_Print.Text = "Print";
             this.btn_Print.UseVisualStyleBackColor = false;
+            this.btn_Print.Click += new System.EventHandler(this.btn_Print_Click);
+            // 
+            // btn_Search
+            // 
+            this.btn_Search.BackColor = System.Drawing.Color.DarkGray;
+            this.btn_Search.FlatAppearance.BorderSize = 0;
+            this.btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Search.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Search.Location = new System.Drawing.Point(699, 104);
+            this.btn_Search.Name = "btn_Search";
+            this.btn_Search.Size = new System.Drawing.Size(75, 23);
+            this.btn_Search.TabIndex = 13;
+            this.btn_Search.Text = "Search";
+            this.btn_Search.UseVisualStyleBackColor = false;
+            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
+            // 
+            // tbNo_SN
+            // 
+            this.tbNo_SN.Location = new System.Drawing.Point(113, 107);
+            this.tbNo_SN.Name = "tbNo_SN";
+            this.tbNo_SN.Size = new System.Drawing.Size(578, 20);
+            this.tbNo_SN.TabIndex = 12;
+            // 
+            // tbNo_Batch
+            // 
+            this.tbNo_Batch.Enabled = false;
+            this.tbNo_Batch.Location = new System.Drawing.Point(113, 80);
+            this.tbNo_Batch.Name = "tbNo_Batch";
+            this.tbNo_Batch.Size = new System.Drawing.Size(121, 20);
+            this.tbNo_Batch.TabIndex = 11;
+            // 
+            // CbNo_WO
+            // 
+            this.CbNo_WO.FormattingEnabled = true;
+            this.CbNo_WO.Location = new System.Drawing.Point(113, 52);
+            this.CbNo_WO.Name = "CbNo_WO";
+            this.CbNo_WO.Size = new System.Drawing.Size(121, 21);
+            this.CbNo_WO.TabIndex = 10;
+            this.CbNo_WO.SelectedValueChanged += new System.EventHandler(this.CbNo_WO_SelectedValueChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(95, 111);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(12, 16);
+            this.label11.TabIndex = 9;
+            this.label11.Text = ":";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(95, 84);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(12, 16);
+            this.label10.TabIndex = 8;
+            this.label10.Text = ":";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(95, 57);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(12, 16);
+            this.label9.TabIndex = 7;
+            this.label9.Text = ":";
+            // 
+            // dgvReprint
+            // 
+            this.dgvReprint.AllowUserToAddRows = false;
+            this.dgvReprint.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvReprint.Location = new System.Drawing.Point(3, 141);
+            this.dgvReprint.Name = "dgvReprint";
+            this.dgvReprint.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvReprint.Size = new System.Drawing.Size(780, 65);
+            this.dgvReprint.TabIndex = 6;
+            this.dgvReprint.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReprint_CellClick);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(12, 111);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(51, 16);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "No. SN";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(12, 84);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(69, 16);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "No. Batch";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(12, 57);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 16);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "No. WO";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.Location = new System.Drawing.Point(3, 31);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(780, 13);
+            this.panel2.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 16);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Reprint";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DarkGray;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(677, 501);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 23);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "Back Menu";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // lb_data1
+            // 
+            this.lb_data1.AutoSize = true;
+            this.lb_data1.Location = new System.Drawing.Point(66, 511);
+            this.lb_data1.Name = "lb_data1";
+            this.lb_data1.Size = new System.Drawing.Size(10, 13);
+            this.lb_data1.TabIndex = 16;
+            this.lb_data1.Text = "-";
+            // 
+            // lb_data2
+            // 
+            this.lb_data2.AutoSize = true;
+            this.lb_data2.Location = new System.Drawing.Point(66, 530);
+            this.lb_data2.Name = "lb_data2";
+            this.lb_data2.Size = new System.Drawing.Size(10, 13);
+            this.lb_data2.TabIndex = 17;
+            this.lb_data2.Text = "-";
+            // 
+            // lb_data4
+            // 
+            this.lb_data4.AutoSize = true;
+            this.lb_data4.Location = new System.Drawing.Point(66, 568);
+            this.lb_data4.Name = "lb_data4";
+            this.lb_data4.Size = new System.Drawing.Size(10, 13);
+            this.lb_data4.TabIndex = 19;
+            this.lb_data4.Text = "-";
+            // 
+            // lb_data3
+            // 
+            this.lb_data3.AutoSize = true;
+            this.lb_data3.Location = new System.Drawing.Point(66, 548);
+            this.lb_data3.Name = "lb_data3";
+            this.lb_data3.Size = new System.Drawing.Size(10, 13);
+            this.lb_data3.TabIndex = 18;
+            this.lb_data3.Text = "-";
             // 
             // reprint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(786, 518);
+            this.ClientSize = new System.Drawing.Size(786, 599);
+            this.Controls.Add(this.lb_data4);
+            this.Controls.Add(this.lb_data3);
+            this.Controls.Add(this.lb_data2);
+            this.Controls.Add(this.lb_data1);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlLoginSupervisor);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "reprint";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "reprint";
             this.Load += new System.EventHandler(this.reprint_Load);
             this.pnlLoginSupervisor.ResumeLayout(false);
@@ -389,8 +460,9 @@ namespace PhaprosSerializationBoxStation
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReprint)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -402,7 +474,7 @@ namespace PhaprosSerializationBoxStation
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox CB_Login;
+        private System.Windows.Forms.ComboBox CB_User;
         private System.Windows.Forms.Button btnIN;
         private System.Windows.Forms.TextBox tbPass;
         private System.Windows.Forms.Label label1;
@@ -420,10 +492,15 @@ namespace PhaprosSerializationBoxStation
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvReprint;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lb_data1;
+        private System.Windows.Forms.Label lb_data2;
+        private System.Windows.Forms.Label lb_data4;
+        private System.Windows.Forms.Label lb_data3;
     }
 }

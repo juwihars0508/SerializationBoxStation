@@ -1,17 +1,25 @@
-﻿namespace PhaprosSerializationBoxStation
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+
+namespace PhaprosSerializationBoxStation
 {
     static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        //[STAThread]
+        [STAThread]
         static void Main()
         {
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
+            
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
             //Form Login
-            //Application.Run(new FormLogin());
+            Application.Run(new FormLogin());
 
             //Form Print Data
             //Application.Run(new Form3());

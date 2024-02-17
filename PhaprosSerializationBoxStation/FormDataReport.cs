@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
-
+using MySql.Data.MySqlClient;
 using PhaprosSerializationBoxStation.Includes;
 
 namespace PhaprosSerializationBoxStation
@@ -20,12 +20,67 @@ namespace PhaprosSerializationBoxStation
             InitializeComponent();
         }
 
+        public string vDataStatus;
+
         SQLConfig config = new SQLConfig();
 
 
         private void FormDataReport_Load(object sender, EventArgs e)
         {
-            loadData();
+            pnlReportGeneral.Visible = true;
+            pnlReportBPOM.Visible = false;
+            btnRptGnrl.BackColor = Color.DeepSkyBlue;
+            btnRptBpom.BackColor = Color.Gray;
+            btnRptReprint.BackColor = Color.Gray;
+            loadWONo_Print();
+        }
+
+        private void loadWONo_Reprint()
+        {
+            cbWoReprint.Items.Clear();
+            config.Init_Con();
+            config.con.Open();
+            //string sql = "";
+            string sql = "select woNo from tblhistory_reprint GROUP BY woNo";
+            MySqlCommand cmd = new MySqlCommand(sql, config.con);
+            MySqlDataReader dr;
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+
+                cbWoReprint.Items.Add(dr[0].ToString());
+
+
+            }
+
+            dr.Close();
+            config.con.Close();
+            cbWoReprint.SelectedIndex = 0;
+        }
+
+        private void loadWONo_Print()
+        {
+            cb_wo.Items.Clear();
+            config.Init_Con();
+            config.con.Open();
+            //string sql = "";
+            string sql = "select wo_no from tblhistory_print GROUP BY wo_no";
+            MySqlCommand cmd = new MySqlCommand(sql, config.con);
+            MySqlDataReader dr;
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+
+                cb_wo.Items.Add(dr[0].ToString());
+
+
+            }
+
+            dr.Close();
+            config.con.Close();
+            cb_wo.SelectedIndex = 0;
+
+            
         }
 
         private void loadData()
@@ -82,7 +137,95 @@ namespace PhaprosSerializationBoxStation
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            if (vDataStatus == "true")
+            {
+                //Report Good
+                config.Init_Con();
+                config.con.Open();
+                string sql = "Select wo_no as 'WO NO', noBatch as 'Batch No', product as 'Product', data_print as 'Datamatrix', status as 'Status' from tblhistory_print where status=1";
+                config.Load_DTG(sql, dgvRptGnrl);
+                config.con.Close();
+            }
+            else if (vDataStatus == "false")
+            {
+                //Report All
+                config.Init_Con();
+                config.con.Open();
+                string sql = "Select wo_no as 'WO NO', noBatch as 'Batch No', product as 'Product', data_print as 'Datamatrix', status as 'Status' from tblhistory_print";
+                config.Load_DTG(sql, dgvRptGnrl);
+                config.con.Close();
+            }
+            else
+            {
+                MessageBox.Show("Pilih Salah satu");
+            }
+        }
 
+        private void btnRptGnrl_Click(object sender, EventArgs e)
+        {
+            pnlReportBPOM.Visible = false;
+            pnlRptRePrint.Visible = false;
+            pnlReportGeneral.Visible = true;
+            btnRptGnrl.BackColor = Color.DeepSkyBlue;
+            btnRptBpom.BackColor = Color.Gray;
+            btnRptReprint.BackColor = Color.Gray;
+            loadWONo_Print();
+        }
+
+        private void btnRptBpom_Click(object sender, EventArgs e)
+        {
+            loadData();
+            pnlReportBPOM.Visible = true;
+            pnlReportGeneral.Visible = false;
+            pnlRptRePrint.Visible = false;
+            btnRptBpom.BackColor = Color.DeepSkyBlue;
+            btnRptGnrl.BackColor = Color.Gray;
+            btnRptReprint.BackColor = Color.Gray;
+        }
+
+        private void CbAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if(CbAll.Checked == true)
+            {
+                vDataStatus = "false";
+            }
+            else
+            {
+                vDataStatus = "";
+            }
+
+        }
+
+        private void CbGood_CheckedChanged(object sender, EventArgs e)
+        {
+            if(CbGood.Checked == true)
+            {
+                vDataStatus = "true";
+            }
+            else
+            {
+                vDataStatus = "";
+            }
+        }
+
+        private void btnSearchReprint_Click(object sender, EventArgs e)
+        {
+            config.Init_Con();
+            config.con.Open();
+            string sql = "Select woNo as 'WO NO', productName as 'Product Name', noBatch as 'Batch No', dataSerial as 'Datamatrix', create_Date as 'Create Date' from tblhistory_reprint where woNo='"+ cbWoReprint.Text +"'";
+            config.Load_DTG(sql, dgvReprint);
+            config.con.Close();
+        }
+
+        private void btnRptReprint_Click(object sender, EventArgs e)
+        {
+            pnlReportBPOM.Visible = false;
+            pnlRptRePrint.Visible = true;
+            pnlReportGeneral.Visible = false;
+            btnRptGnrl.BackColor = Color.Gray;
+            btnRptBpom.BackColor = Color.Gray;
+            btnRptReprint.BackColor = Color.DeepSkyBlue;
+            loadWONo_Reprint();
         }
     }
 

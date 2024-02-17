@@ -211,10 +211,11 @@ namespace PhaprosSerializationBoxStation
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::PhaprosSerializationBoxStation.Properties.Resources.logoProline;
+            this.pictureBox2.Image = global::PhaprosSerializationBoxStation.Properties.Resources.LIGHT_TRANSPARAN;
             this.pictureBox2.Location = new System.Drawing.Point(14, 27);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(123, 54);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
@@ -240,18 +241,18 @@ namespace PhaprosSerializationBoxStation
             this.btn_MenuReprint.TabIndex = 40;
             this.btn_MenuReprint.Text = "Reprint";
             this.btn_MenuReprint.UseVisualStyleBackColor = false;
+            this.btn_MenuReprint.Click += new System.EventHandler(this.btn_MenuReprint_Click);
             // 
             // btnMin
             // 
             this.btnMin.BackColor = System.Drawing.Color.Transparent;
-            this.btnMin.BackgroundImage = global::PhaprosSerializationBoxStation.Properties.Resources.minimize_button_icon;
+            this.btnMin.BackgroundImage = global::PhaprosSerializationBoxStation.Properties.Resources.MinimizeDark;
             this.btnMin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnMin.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMin.Location = new System.Drawing.Point(847, 12);
             this.btnMin.Name = "btnMin";
             this.btnMin.Size = new System.Drawing.Size(41, 23);
             this.btnMin.TabIndex = 36;
-            this.btnMin.Text = "-";
             this.btnMin.UseVisualStyleBackColor = false;
             this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
             // 
